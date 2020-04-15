@@ -1,6 +1,11 @@
 # ns-covid-19
 Current and historical Nova Scotia COVID-19 stats.
 
+# License
+Distributable under Creative Commons Attribution-ShareAlike 4.0 International license:
+https://creativecommons.org/licenses/by-sa/4.0/legalcode
+
+# Blather
 Because I'm interested in this side of things, and I haven't been able to find anyone else tracking similar stats for Nova Scotia.  Let me know if you have found (or find in future) another source.
 
 Also if any of my math looks wonky to you, please do let me know.
