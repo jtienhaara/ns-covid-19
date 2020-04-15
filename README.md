@@ -10,31 +10,57 @@ There are * tons * of assumptions (some explicit, and described below; others im
 Columns, for anyone who wants to play along at home, with equations given for row 10:
 
 A: Date
+
 B: Confirmed Cases
+
 C: Presumptive Cases
+
 D: Negative
+
 E: Total
+
 F: Rate of Change =(B10+C10)/(B9+C9) - 1 (x100%)
+
 G: Acceleration =(F10+1)/(F9+1) - 1 (x100%)
+
 H: # Doubles =ROUNDDOWN(LOG((B10+C10)/($B$2+$C$2),2))
+
 I: Today's # Days / Doubling=1 / LOG((B10+C10)/(B9+C9),2)
+
 J: Avg # Days / Doubling =COUNT($A$2:A10) / LOG((B10+C10)/($B$2+$C$2),2)
+
 K: # tested today=E10-E9 *NOTE* provincial reports always give a wildly different number, possibly because results are not yet in for those tested in a given day.  The number reported here is the number of tested cases *with results*.
+
 L: # cases recovered
+
 M: # active Cases=B10+C10-L10-N10
+
 N: # deaths
+
 O: 100% of NS population infected, assuming only 20% are known cases (80% undocumented)=923598 * (1 - 0.8)
+
 P: # days until 100% of Nova Scotians are infected (assuming 80% undocumented rate)=LOG(O10,2)*I10
+
 Q: date when 100% of Nova Scotians will be infected, assuming 80% undocumented rate=A10+P10
+
 R: New cases=(B10+C10)-(B9+C9)
+
 S: Estimated active cases: sum of the last 11 rows (including this one) from column R.  This assumes that the average hospital stays is 11 days (at the low end of globally reported averages).
+
 T: # active cases in hospital
+
 U: # hospital cases in ICU (subset of column T)
+
 V: % of active cases in hospital=,T10/S10
+
 ...
+
 X: Doubling rate to avoid hospital collapse=playing with numbers until there are no "!"s in column AC.
+
 ...
+
 AB: Predictaed # of active cases in hospital, assuming 11 day average stay in hospital, and gradually slowing down the doubling rate to match what's in column X=MAX(0, MIN(O9*0.2,AA9*POWER(2,1/IF(I10=0,2.4,I10))))
+
 AC: Uh-oh an exclamation point appears if the predicted number of active cases in hospital is more than # hospital beds / # respirators / # respiratory therapists.  This is a bit of a wild heuristic, but oh well.==IF(AB10>MIN(AE10,MIN(AF10,AG10)),"!","")
 
 
@@ -58,6 +84,4 @@ Hospital occupancy rate:
 Number of inpatient days / ( # available beds * 365 ) https://www.easycalculation.com/medical/learn-inpatient-occupancy-rate.php
 Number of inpatient days 2017-2018 (1,037,410), # beds (3,142): http://www.nshealth.ca/AnnualReport2017-18/numbers.html
 
-# Pretty infographic:
-
-https://novascotia.ca/coronavirus/data/
+Pretty infographic: https://novascotia.ca/coronavirus/data/
